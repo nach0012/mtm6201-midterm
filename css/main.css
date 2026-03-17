@@ -1,0 +1,723 @@
+/* =============================================================
+   MAIN.CSS — My Coffee House Midterm Project
+   
+   I used a mobile-first approach which means I wrote the base 
+   styles for small screens first, then used min-width media 
+   queries to add changes for larger screens on top.
+   
+   768px = tablet breakpoint
+   1100px = desktop breakpoint
+   ============================================================= */
+
+
+/* ============================================================
+   1. CSS VARIABLES
+   I stored all my colors and font sizes as variables so I only 
+   have to change them in one place if needed. Makes everything 
+   consistent across the whole stylesheet.
+   ============================================================ */
+:root {
+  --white:      #ffffff;
+  --black:      #000000;
+  --gold:       #d69e3d;     /* the main gold/amber accent color */
+  --gold-dark:  #966f2c;     /* darker gold used for hover states */
+  --bg:         #f3f0e9;     /* warm cream background color */
+  --dark:       #1a1410;     /* very dark brown for dark sections */
+
+  /* Font size scale for mobile — these get overridden at tablet and desktop */
+  --h1: 2.027rem;
+  --h2: 1.802rem;
+  --h3: 1.424rem;
+
+  /* Maximum width I want any content to stretch to */
+  --max-width: 1200px;
+}
+
+
+/* ============================================================
+   2. RESET & BASE STYLES
+   I reset margin and padding on everything so browsers don't
+   add their own default spacing that I didn't ask for.
+   box-sizing: border-box means padding gets included in the 
+   width calculation instead of adding to it — much easier to work with.
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  /* smooth scrolling makes clicking anchor links feel polished */
+  scroll-behavior: smooth;
+  /* prevents any element from causing a horizontal scrollbar */
+  overflow-x: hidden;
+}
+
+body {
+  /* Karla is the body font as specified in the project requirements */
+  font-family: 'Karla', sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--black);
+  background-color: var(--bg);
+  overflow-x: hidden;
+}
+
+/* Images fill their container width but never stretch beyond it */
+img { max-width: 100%; height: auto; display: block; }
+
+/* Removing default underline from all links */
+ul  { list-style: none; }
+a   { text-decoration: none; }
+
+/* Lato is used for all headings as specified in the project requirements */
+h1, h2, h3, h4 {
+  font-family: 'Lato', sans-serif;
+  font-weight: 900;
+  line-height: 1.15;
+}
+/* Applying the mobile font sizes from the type scale in the requirements */
+h1 { font-size: var(--h1); }
+h2 { font-size: var(--h2); }
+h3 { font-size: var(--h3); }
+p  { font-size: 1rem; line-height: 1.75; }
+
+
+/* ============================================================
+   3. REUSABLE UTILITIES
+   ============================================================ */
+
+/* Small gold uppercase label that appears above section headings.
+   I reuse this class across multiple sections throughout the page */
+.label {
+  font-family: 'Karla', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 0.4rem;
+}
+/* White version of the label for dark backgrounds like the CTA banner */
+.label--light { color: var(--white); opacity: 0.75; }
+/* Gold version for the dark testimonials section */
+.label--gold  { color: var(--gold); }
+
+/* The wrapper centres all content and stops it from getting too wide.
+   I use margin-inline: auto (left and right auto) to centre it horizontally.
+   padding-inline adds breathing room on the sides so content doesn't touch the edge */
+.wrapper {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+/* Skip link is hidden off-screen until someone presses Tab to focus it.
+   This is important for keyboard users so they can skip past the navigation */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 9999;
+  background: var(--gold);
+  color: var(--white);
+  font-family: 'Karla', sans-serif;
+  font-weight: 700;
+  padding: 0.5rem 1rem;
+  border-radius: 0 0 4px 4px;
+  transition: top 0.2s ease;
+}
+/* When focused the skip link slides into view at the top of the page */
+.skip-link:focus { top: 0; }
+
+
+/* ============================================================
+   4. BUTTONS
+   I have three button styles for different contexts:
+   .btn-hero    = white filled button on the hero section
+   .btn-explore = transparent outline button on CTA panels  
+   .btn-locations = transparent outline button on CTA panels
+   .btn-dark    = black filled button on the light story section
+   
+   The transition property makes the hover effect animate smoothly
+   instead of changing instantly
+   ============================================================ */
+.btn {
+  display: inline-block;
+  font-family: 'Karla', sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.8rem 2rem;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.25s ease, color 0.25s ease,
+              border-color 0.25s ease, transform 0.2s ease;
+}
+/* Slight upward movement on hover gives a nice tactile feel */
+.btn:hover, .btn:focus { transform: translateY(-2px); outline: none; }
+.btn:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+
+/* White filled hero button — turns gold when hovered */
+.btn-hero {
+  background-color: var(--white);
+  color: var(--black);
+  border: 2px solid var(--white);
+  font-weight: 700;
+  padding: 0.9rem 2.5rem;
+  /* This button fades up into view as part of the hero animation */
+  animation: fadeUp 0.8s 0.35s ease both;
+}
+.btn-hero:hover, .btn-hero:focus {
+  background-color: var(--gold);
+  border-color: var(--gold);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+/* Explore Our Menu CTA button — transparent with white border.
+   I made this a standalone class (not using .btn base) so nothing 
+   from the base .btn styles interferes with it */
+.btn-explore,
+.btn-explore:visited,
+.btn-explore:active {
+  display: inline-block;
+  font-family: 'Karla', sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.9rem 2.5rem;
+  background-color: transparent;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.btn-explore:hover, .btn-explore:focus {
+  background-color: #ffffff;
+  color: #000000;
+  outline: none;
+}
+
+/* View Locations CTA button — same transparent outline style */
+.btn-locations,
+.btn-locations:visited,
+.btn-locations:active {
+  display: inline-block;
+  font-family: 'Karla', sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.9rem 2.5rem;
+  background-color: transparent;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.btn-locations:hover, .btn-locations:focus {
+  background-color: #ffffff;
+  color: #000000;
+  outline: none;
+}
+
+/* Black button for the story section — turns dark gold on hover */
+.btn-dark {
+  background-color: var(--black);
+  border-color: var(--black);
+  color: var(--white);
+}
+.btn-dark:hover, .btn-dark:focus {
+  background-color: var(--gold-dark);
+  border-color: var(--gold-dark);
+}
+
+
+/* ============================================================
+   5. HEADER
+   Sticky means it stays at the top of the screen while scrolling.
+   On mobile the logo and nav stack vertically and are centred.
+   At tablet+ they switch to a horizontal row with logo left, nav right.
+   ============================================================ */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100; /* high z-index keeps it above all other content */
+  background-color: #000000;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+}
+
+/* Column layout on mobile — centres everything */
+.header-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+}
+
+
+
+/* Setting explicit dimensions on the logo image so it doesn't collapse */
+.logo-svg {   width: 120px;
+ }
+
+/* Navigation list is horizontal with spacing between links */
+.nav-list { display: flex; gap: 1.75rem; }
+.nav-list a {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white);
+  position: relative;
+  padding-bottom: 2px;
+}
+
+/* The underline animates in from the left on hover.
+   I use a pseudo-element with width:0 that expands to width:100% on hover */
+.nav-list a::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 2px;
+  background-color: var(--gold);
+  transition: width 0.25s ease;
+}
+.nav-list a:hover::after,
+.nav-list a:focus::after { width: 100%; }
+.nav-list a:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+
+
+/* ============================================================
+   6. HERO SECTION
+   The background photo is set with CSS background-image.
+   A semi-transparent black overlay sits on top of the photo
+   so the white text stays readable regardless of the photo content.
+   ============================================================ */
+.hero {
+  position: relative;
+  min-height: 320px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('../images/hero-background.jpg');
+  background-size: cover; /* covers the full area without stretching */
+  background-position: center;
+  color: var(--white);
+  overflow: hidden;
+}
+
+/* The overlay is absolutely positioned to cover the entire hero */
+.hero-overlay {
+  position: absolute;
+  inset: 0; /* shorthand for top:0 right:0 bottom:0 left:0 */
+  background: rgba(0,0,0,0.48);
+}
+
+/* z-index:1 places the content above the overlay so it's visible */
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 2rem 1.5rem;
+  width: 100%;
+  animation: fadeUp 0.8s ease both; /* hero content fades up on page load */
+}
+.hero-content h1 {
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  animation: fadeUp 0.8s 0.1s ease both; /* slight delay after the container */
+}
+.hero-content p {
+  max-width: 38ch;
+  margin-inline: auto;
+  margin-bottom: 1.5rem;
+  font-size: 0.85rem;
+  animation: fadeUp 0.8s 0.2s ease both;
+}
+
+
+/* ============================================================
+   7. WELCOME / GALLERY SECTION
+   The gallery uses CSS Grid with 2 columns on mobile.
+   The large latte image spans both columns (full width) on mobile.
+   ============================================================ */
+.welcome {
+  padding: 2.5rem 1.25rem;
+  background-color: var(--bg);
+}
+.welcome h2 { text-transform: uppercase; margin-bottom: 1rem; }
+
+/* 2 column grid on mobile */
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.3rem;
+  margin-top: 1rem;
+}
+/* grid-column: 1 / -1 means span from first to last column = full width */
+.gallery-item--large { grid-column: 1 / -1; }
+
+/* object-fit: cover fills the box without distorting the image */
+.gallery-item img {
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
+  object-position: center;
+}
+.gallery-item--large img { height: 190px; }
+
+
+/* ============================================================
+   8. FEATURES SECTION (WHY VISIT US)
+   Cards stack in one column on mobile.
+   The icon images have a slow pulse animation to draw the eye.
+   ============================================================ */
+.features {
+  padding: 2.5rem 1.25rem;
+  background-color: var(--bg);
+  text-align: center;
+}
+.features h2 { margin-bottom: 1.5rem; }
+
+/* Single column on mobile */
+.features-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+.feature-card h3 { text-transform: uppercase; margin: 0.75rem 0 0.5rem; }
+.feature-card p { color: #555; max-width: 34ch; margin-inline: auto; font-size: 0.9rem; }
+
+/* The icon container uses the pulse animation defined in the keyframes below */
+.feature-icon {
+  display: flex;
+  justify-content: center;
+  animation: pulse 3s ease-in-out infinite;
+}
+.feature-icon img { width: 90px; height: 90px; object-fit: contain; }
+
+
+/* ============================================================
+   9. CTA BANNER SECTION
+   One background image covers the whole section.
+   A dark overlay on top makes the white text readable.
+   The two panels stack on mobile and sit side by side on tablet+.
+   ============================================================ */
+.cta-banner {
+  position: relative;
+  color: var(--white);
+  background-image: url('../images/coffee-shop.jpeg');
+  background-size: cover;
+  background-position: center;
+}
+
+/* ::before creates a dark overlay as a pseudo-element — no extra HTML needed */
+.cta-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+}
+
+/* z-index:1 lifts the grid above the ::before overlay */
+.cta-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr; /* single column on mobile */
+}
+.cta-panel {
+  min-height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1.5rem;
+}
+/* No border by default on mobile */
+.cta-panel--right { border-top: none; }
+
+/* All text and buttons inside each panel are centred */
+.cta-panel-inner { text-align: center; }
+.cta-panel-inner .label { margin-bottom: 0.5rem; }
+.cta-panel-inner h2 {
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  margin-bottom: 1.25rem;
+  max-width: 14ch;
+  margin-inline: auto;
+}
+
+
+/* ============================================================
+   10. STORY SECTION (ABOUT US)
+   Single column on mobile — image above text.
+   Side by side on tablet and desktop using CSS Grid.
+   ============================================================ */
+.story {
+  padding: 2.5rem 1.25rem;
+  background-color: var(--bg);
+}
+
+/* Single column on mobile */
+.story-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+.story-image img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+}
+
+/* Force the About Us label to always show in gold */
+.story-text .label { color: #d69e3d !important; }
+.story-text h2 { text-transform: uppercase; margin-bottom: 1rem; }
+.story-text p { color: #333; margin-bottom: 1rem; font-size: 0.95rem; line-height: 1.7; }
+.story-text .btn { margin-top: 0.5rem; }
+
+
+/* ============================================================
+   11. TESTIMONIALS SECTION
+   Pure black background. Cards stack on mobile.
+   Each card uses position:relative so I can use position:absolute
+   on the blockquote to overlay it on top of the photo.
+   A gradient goes from transparent at the top to dark at the bottom
+   so the white quote text is always readable.
+   ============================================================ */
+.testimonials {
+  background-color: #000000;
+  color: var(--white);
+  padding: 2.5rem 1.25rem;
+}
+.testimonials-inner { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+.testimonials h2 { text-transform: uppercase; margin-bottom: 0; }
+
+/* Single column on mobile, cards are constrained in width */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+.testimonial-card {
+  position: relative; /* needed so the absolute blockquote positions relative to this */
+  overflow: hidden;
+  max-width: 500px;
+  margin-inline: auto;
+  width: 100%;
+}
+.testimonial-card img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* ::after creates the dark gradient overlay on each card photo */
+.testimonial-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 55%, transparent 100%);
+}
+
+/* The blockquote sits at the bottom of the card above the gradient */
+.testimonial-card blockquote {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 1rem 1.25rem;
+  z-index: 1; /* above the ::after gradient */
+  font-style: normal;
+}
+.testimonial-card blockquote p {
+  font-size: 0.82rem;
+  color: var(--white);
+  margin-bottom: 0.4rem;
+  line-height: 1.5;
+}
+/* The person's name shows in gold to match the brand color */
+.testimonial-card blockquote cite {
+  font-family: 'Karla', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-style: normal;
+}
+
+
+/* ============================================================
+   12. FOOTER
+   Simple centered footer that matches the black testimonials section
+   ============================================================ */
+.site-footer {
+  background-color: #000000;
+  color: rgba(255,255,255,0.45);
+  text-align: center;
+  padding: 1.5rem 1.25rem;
+  border-top: 1px solid rgba(255,255,255,0.15);
+}
+.site-footer p { font-size: 0.8rem; margin: 0; }
+
+
+/* ============================================================
+   13. KEYFRAME ANIMATIONS
+   
+   fadeUp: used on the hero content — elements start 20px below
+   their final position and fade in upward. This creates a smooth
+   entrance effect on page load.
+   
+   pulse: used on the feature icons — a slow gentle scale up and 
+   back down that draws the eye without being distracting.
+   ============================================================ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.07); }
+}
+
+
+/* =============================================================
+   14. TABLET MEDIA QUERY — min-width: 768px
+   
+   At 768px I switch from single column to multi-column layouts.
+   I also bump up the font sizes to the tablet scale.
+   The header switches from stacked to a row layout here.
+   ============================================================= */
+@media (min-width: 768px) {
+
+  /* Tablet type scale from the project requirements */
+  :root {
+    --h1: 2.986rem;
+    --h2: 2.488rem;
+    --h3: 1.728rem;
+  }
+
+  /* Header switches from column to row — logo left, nav right */
+  .header-inner {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0;
+  }
+  .nav-list a { font-size: 0.8rem; }
+  .nav-list { gap: 1.5rem; }
+
+  /* Hero gets taller on tablet */
+  .hero { min-height: 500px; }
+  .hero-content { max-width: 580px; padding: 3rem 1.25rem; }
+
+  .welcome { padding: 3.5rem 1.25rem; }
+
+  /* Gallery switches to 3 columns. The large image spans the left 
+     column across both rows using grid-row: 1 / 3 */
+  .gallery {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 0.4rem;
+  }
+  .gallery-item--large { grid-column: 1 / 2; grid-row: 1 / 3; }
+  /* height:100% makes the large image fill both row heights */
+  .gallery-item--large img { height: 100%; min-height: 340px; }
+  .gallery-item img { height: 168px; }
+
+  /* Features switches to 2 columns. The third card spans both 
+     columns and is centred using max-width and margin-inline:auto */
+  .features { padding: 3.5rem 1.25rem; }
+  .features-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .feature-card:last-child { grid-column: 1 / -1; max-width: 300px; margin-inline: auto; }
+
+  /* CTA panels go from stacked to side by side */
+  .cta-grid { grid-template-columns: 1fr 1fr; }
+  .cta-panel { min-height: 340px; }
+  .cta-panel-inner h2 { font-size: 1.802rem; }
+
+  /* Story section — image left, text right */
+  .story { padding: 3.5rem 1.25rem; }
+  .story-inner { grid-template-columns: 1fr 1fr; align-items: center; gap: 2.5rem; }
+  .story-image img { height: 400px; }
+
+  /* Testimonials switch from single column to 3 columns.
+     Cards go back to full width since there's enough room */
+  .testimonials { padding: 3.5rem 1.25rem; }
+  .testimonial-card { max-width: none; margin-inline: 0; }
+  .testimonial-card img { height: 360px; }
+  .testimonials-grid { grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+}
+
+
+/* =============================================================
+   15. DESKTOP MEDIA QUERY — min-width: 1100px
+   
+   At 1100px I apply the largest font sizes and increase section
+   padding for more breathing room. The header stays as a row
+   but with more padding.
+   ============================================================= */
+@media (min-width: 1100px) {
+
+  /* Desktop type scale from the project requirements */
+  :root {
+    --h1: 3.815rem;
+    --h2: 3.052rem;
+    --h3: 1.953rem;
+  }
+
+  /* Header stays black but switches to row layout with more padding */
+  .site-header { background-color: #000000; }
+  .header-inner {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0;
+    padding: 1rem 1.25rem;
+  }
+  .logo-link { color: var(--white); font-size: 1.1rem; }
+  .nav-list a { color: var(--white); font-size: 0.85rem; }
+  .nav-list { gap: 2rem; }
+
+  /* Hero gets taller and content has a max-width so it doesn't get too wide */
+  .hero { min-height: 600px; }
+  .hero-content { max-width: 700px; }
+
+  /* More padding on welcome section for desktop */
+  .welcome { padding: 5rem 1.25rem; }
+  .gallery { gap: 0.5rem; }
+  .gallery-item img { height: 220px; }
+  .gallery-item--large img { min-height: 450px; }
+
+  /* Features: all 3 cards in one row on desktop */
+  .features { padding: 5rem 1.25rem; }
+  .features-grid { grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
+  /* Reset the tablet centering so the third card is normal again */
+  .feature-card:last-child { grid-column: auto; max-width: none; margin-inline: 0; }
+
+  /* CTA panels taller with more padding on desktop */
+  .cta-panel { min-height: 420px; padding: 3rem 4rem; }
+  .cta-panel-inner h2 { font-size: 2.2rem; }
+
+  /* Story section gets more padding and the image column is slightly wider */
+  .story { padding: 5rem 1.25rem; }
+  .story-inner { grid-template-columns: 1fr 1.1fr; gap: 4rem; }
+  .story-image img { height: 500px; }
+
+  /* Testimonials get more padding and taller cards on desktop */
+  .testimonials { padding: 5rem 1.25rem; }
+  .testimonial-card img { height: 480px; }
+}

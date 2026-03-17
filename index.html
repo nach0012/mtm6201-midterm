@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- UTF-8 makes sure special characters like accents show up properly -->
+  <meta charset="UTF-8" />
+  <!-- This tells the browser to match the screen width so it looks good on phones -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Midterm Project</title>
+
+  <!-- I'm loading two fonts from Google: Lato for headings and nav, Karla for body text -->
+  <!-- The preconnect tags speed things up by connecting to Google early -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;700&family=Lato:wght@400;700;900&display=swap" rel="stylesheet" />
+
+  <!-- Linking my stylesheet — it lives inside the css folder -->
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+
+  <!-- Skip link: visually hidden until someone uses keyboard navigation.
+       It lets them jump straight to the content and skip the nav menu -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- HEADER
+       The header stays stuck to the top while scrolling (sticky positioning in CSS).
+       role="banner" tells screen readers this is the site header -->
+  <header class="site-header" role="banner">
+    <div class="wrapper header-inner">
+
+      <!-- Logo: using an img tag for the SVG file from the images folder.
+           aria-hidden on the image means screen readers skip it since the
+           text "My Coffee House" already describes it -->
+      <a href="#" class="logo-link" aria-label="My Coffee House – home">
+        <img class="logo-svg" src="images/my-coffee-shop-logo.svg" alt="" aria-hidden="true" />
+    
+      </a>
+
+      <!-- Primary navigation: aria-label tells screen readers what this nav is for,
+           since there could be multiple nav elements on a page -->
+      <nav aria-label="Primary navigation">
+        <!-- role="list" is added because some screen readers ignore list styling
+             when list-style is removed in CSS -->
+        <ul class="nav-list" role="list">
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#locations">Locations</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT
+       id="main-content" is the target of the skip link above -->
+  <main id="main-content">
+
+    <!-- HERO SECTION
+         This is the big banner at the top with the background photo.
+         The overlay div sits on top of the photo to darken it so the white text is readable.
+         aria-label describes the section for screen readers since there's no heading visible -->
+    <section class="hero" aria-label="Hero banner">
+      <!-- aria-hidden means screen readers skip this decorative overlay div -->
+      <div class="hero-overlay" aria-hidden="true"></div>
+      <div class="wrapper hero-content">
+        <h1>Experience Coffee Like Never Before</h1>
+        <p>We craft more than beverages; we create memories, one flavorful moment at a time. Embrace the aroma and let every visit be a chapter in your coffee story.</p>
+        <!-- btn-hero gives this button its own white-filled style separate from other buttons -->
+        <a href="#menu" class="btn btn-hero">Explore Our Menu</a>
+      </div>
+    </section>
+
+    <!-- WELCOME / GALLERY SECTION
+         aria-labelledby points to the h2 inside so screen readers announce the heading
+         id="about" is the anchor target for the "About Us" nav link -->
+    <section class="welcome" id="about" aria-labelledby="welcome-heading">
+      <div class="wrapper">
+        <p class="label">Welcome to My Coffee House</p>
+        <h2 id="welcome-heading">Experience a New Way to Taste Coffee</h2>
+
+        <!-- Gallery grid: on mobile the large image spans full width.
+             On tablet it moves to the left column spanning two rows.
+             role="list" and role="listitem" help screen readers understand
+             this is a collection of related images -->
+        <div class="gallery" role="list">
+          <!-- This is the large latte image — it gets special treatment in the grid layout -->
+          <div class="gallery-item gallery-item--large" role="listitem">
+            <img src="images/latte.jpeg" alt="Barista pouring latte art into a cup" loading="lazy" />
+          </div>
+          <!-- loading="lazy" on all images means they only load when scrolled into view,
+               which makes the page faster to load initially -->
+          <div class="gallery-item" role="listitem">
+            <img src="images/coffee-beans.jpeg" alt="Close-up of roasted coffee beans" loading="lazy" />
+          </div>
+          <div class="gallery-item" role="listitem">
+            <img src="images/pouring-coffee.jpeg" alt="Coffee being poured from a glass container" loading="lazy" />
+          </div>
+          <div class="gallery-item" role="listitem">
+            <img src="images/three-cups.jpeg" alt="Three coffee cups held together" loading="lazy" />
+          </div>
+          <div class="gallery-item" role="listitem">
+            <img src="images/smiling-employee.jpeg" alt="Smiling barista at the counter" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES SECTION (WHY VISIT US)
+         Three cards explaining what makes the coffee shop special.
+         Each card is wrapped in an article tag since each one is its own self-contained piece of content -->
+    <section class="features" aria-labelledby="features-heading">
+      <div class="wrapper">
+        <p class="label">What We Offer</p>
+        <h2 id="features-heading">Why Visit Us?</h2>
+
+        <!-- features-grid: single column on mobile, switches to 2 cols on tablet,
+             then all 3 side by side on desktop -->
+        <div class="features-grid">
+
+          <!-- aria-label on each article helps screen readers identify what each card is about -->
+          <article class="feature-card" aria-label="Fair Trade Coffee">
+            <div class="feature-icon">
+              <!-- alt="" and aria-hidden="true" because the icon is decorative —
+                   the heading below already explains what it represents -->
+              <img src="images/fair-trade.svg" alt="" aria-hidden="true" />
+            </div>
+            <h3>Fair Trade Coffee</h3>
+            <p>We build direct relationships with the farmers and producers who help in the development of delicious, sustainable and organic coffee.</p>
+          </article>
+
+          <article class="feature-card" aria-label="Local Baked Goods">
+            <div class="feature-icon">
+              <img src="images/local-baked-goods.svg" alt="" aria-hidden="true" />
+            </div>
+            <h3>Local Baked Goods</h3>
+            <p>We use local products to bake our goods and bring in a variety of treats from local bakers with our community.</p>
+          </article>
+
+          <article class="feature-card" aria-label="Made With Love">
+            <div class="feature-icon">
+              <img src="images/made-with-love.svg" alt="" aria-hidden="true" />
+            </div>
+            <h3>Made With Love</h3>
+            <p>We value our customers and make it our priority to serve everyone with respect and a friendly smile to start their day off right.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA BANNER SECTION
+         Both panels share one background image set in CSS on .cta-banner.
+         On mobile they stack vertically, on tablet they sit side by side.
+         id="menu" is the anchor target for the "Menu" nav link -->
+    <section class="cta-banner" id="menu" aria-label="Menu and Locations call to action">
+      <div class="cta-grid">
+
+        <!-- Left panel: links to the menu section -->
+        <div class="cta-panel">
+          <div class="cta-panel-inner">
+            <!-- label--light makes the small label text white instead of gold
+                 since it sits on a dark background here -->
+            <p class="label label--light">Our Menu</p>
+            <h2>Explore What We Have to Offer You</h2>
+            <!-- btn-explore has its own standalone CSS so it shows as transparent
+                 with a white border, separate from other button styles -->
+            <a href="#features" class="btn-explore">Explore Our Menu</a>
+          </div>
+        </div>
+
+        <!-- Right panel: links to the locations section -->
+        <div class="cta-panel cta-panel--right">
+          <div class="cta-panel-inner">
+            <p class="label label--light">Locations</p>
+            <h2>Find Your Nearest Coffee Shop</h2>
+            <a href="#locations" class="btn-locations">View Locations</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ABOUT / STORY SECTION
+         On mobile the image sits above the text.
+         On tablet and desktop they sit side by side using CSS Grid -->
+    <section class="story" aria-labelledby="story-heading">
+      <div class="wrapper story-inner">
+
+        <div class="story-image">
+          <img src="images/about-us.jpeg" alt="Two baristas working at the espresso machine" loading="lazy" />
+        </div>
+
+        <div class="story-text">
+          <p class="label">About Us</p>
+          <h2 id="story-heading">Read Our Story</h2>
+          <p>In the heart of our community, My Coffee House emerged as a humble local coffee shop that sought to redefine the coffee experience. Founded with a passion for quality brews and a commitment to fostering genuine connections, we embarked on this journey with a vision to create a warm and inviting space for coffee enthusiasts and casual patrons alike.</p>
+          <p>My Coffee House quickly became a cherished gathering spot, where the rich aroma of freshly ground coffee beans mingled with the laughter of friends and the tapping of keyboards from those seeking a cozy workspace.</p>
+          <!-- btn-dark gives this a black background to stand out on the cream background -->
+          <a href="#about" class="btn btn-dark">Learn More</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION
+         Dark background section with three customer photos.
+         The quote text is overlaid on each photo using absolute positioning in CSS.
+         id="locations" is the anchor target for the "Locations" nav link -->
+    <section class="testimonials" id="locations" aria-labelledby="testimonials-heading">
+      <div class="wrapper">
+        <div class="testimonials-inner">
+          <div class="testimonials-header">
+            <!-- label--gold keeps the gold color since it's on a dark background -->
+            <p class="label label--gold">Testimonials</p>
+            <h2 id="testimonials-heading">What Our Customers Say About Us</h2>
+          </div>
+
+          <!-- testimonials-grid: single column on mobile, 3 columns on tablet and desktop -->
+          <div class="testimonials-grid">
+
+            <!-- Each testimonial is an article because each one is a standalone piece of content.
+                 blockquote is the correct semantic element for a quoted piece of text -->
+            <article class="testimonial-card" aria-label="Testimonial from Jane G., Toronto">
+              <img src="images/testimonial-1.jpeg" alt="Customer Jane G. smiling with a coffee cup" loading="lazy" />
+              <blockquote>
+                <p>"I always make a point to visit My Coffee Company when in Ottawa. Delicious coffee and friendly service."</p>
+                <!-- footer inside blockquote holds the attribution — this is proper semantic HTML -->
+                <footer><cite>Jane G., Toronto</cite></footer>
+              </blockquote>
+            </article>
+
+            <article class="testimonial-card" aria-label="Testimonial from Scott G., Ottawa">
+              <img src="images/testimonial-2.jpeg" alt="Customer Scott G. laughing with coffee" loading="lazy" />
+              <blockquote>
+                <p>"Great atmosphere to get some work done while enjoying a cup or two of freshly brewed coffee."</p>
+                <footer><cite>Scott G., Ottawa</cite></footer>
+              </blockquote>
+            </article>
+
+            <article class="testimonial-card" aria-label="Testimonial from Sofia P., Ottawa">
+              <img src="images/testimonial-3.jpeg" alt="Customer Sofia P. smiling with a coffee cup" loading="lazy" />
+              <blockquote>
+                <p>"Best coffee in Ottawa and the service is top notch. Would highly recommend a visit."</p>
+                <footer><cite>Sofia P., Ottawa</cite></footer>
+              </blockquote>
+            </article>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER
+       role="contentinfo" tells screen readers this is the site footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="wrapper">
+      <p>&copy; My Coffee Company 2024</p>
+    </div>
+  </footer>
+
+</body>
+</html>
