@@ -17,12 +17,16 @@
    consistent across the whole stylesheet.
    ============================================================ */
 :root {
-  --white:      #ffffff;
-  --black:      #000000;
-  --gold:       #d69e3d;     /* the main gold/amber accent color */
-  --gold-dark:  #966f2c;     /* darker gold used for hover states */
-  --bg:         #f3f0e9;     /* warm cream background color */
-  --dark:       #1a1410;     /* very dark brown for dark sections */
+  --white: #ffffff;
+  --black: #000000;
+  --gold: #d69e3d;
+  /* the main gold/amber accent color */
+  --gold-dark: #966f2c;
+  /* darker gold used for hover states */
+  --bg: #f3f0e9;
+  /* warm cream background color */
+  --dark: #1a1410;
+  /* very dark brown for dark sections */
 
   /* Font size scale for mobile — these get overridden at tablet and desktop */
   --h1: 2.027rem;
@@ -41,7 +45,9 @@
    box-sizing: border-box means padding gets included in the 
    width calculation instead of adding to it — much easier to work with.
    ============================================================ */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -65,23 +71,48 @@ body {
 }
 
 /* Images fill their container width but never stretch beyond it */
-img { max-width: 100%; height: auto; display: block; }
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
 
 /* Removing default underline from all links */
-ul  { list-style: none; }
-a   { text-decoration: none; }
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
 
 /* Lato is used for all headings as specified in the project requirements */
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   font-family: 'Lato', sans-serif;
   font-weight: 900;
   line-height: 1.15;
 }
+
 /* Applying the mobile font sizes from the type scale in the requirements */
-h1 { font-size: var(--h1); }
-h2 { font-size: var(--h2); }
-h3 { font-size: var(--h3); }
-p  { font-size: 1rem; line-height: 1.75; }
+h1 {
+  font-size: var(--h1);
+}
+
+h2 {
+  font-size: var(--h2);
+}
+
+h3 {
+  font-size: var(--h3);
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.75;
+}
 
 
 /* ============================================================
@@ -100,10 +131,17 @@ p  { font-size: 1rem; line-height: 1.75; }
   display: block;
   margin-bottom: 0.4rem;
 }
+
 /* White version of the label for dark backgrounds like the CTA banner */
-.label--light { color: var(--white); opacity: 0.75; }
+.label--light {
+  color: var(--white);
+  opacity: 0.75;
+}
+
 /* Gold version for the dark testimonials section */
-.label--gold  { color: var(--gold); }
+.label--gold {
+  color: var(--gold);
+}
 
 /* The wrapper centres all content and stops it from getting too wide.
    I use margin-inline: auto (left and right auto) to centre it horizontally.
@@ -129,8 +167,11 @@ p  { font-size: 1rem; line-height: 1.75; }
   border-radius: 0 0 4px 4px;
   transition: top 0.2s ease;
 }
+
 /* When focused the skip link slides into view at the top of the page */
-.skip-link:focus { top: 0; }
+.skip-link:focus {
+  top: 0;
+}
 
 
 /* ============================================================
@@ -155,11 +196,20 @@ p  { font-size: 1rem; line-height: 1.75; }
   border: 2px solid transparent;
   cursor: pointer;
   transition: background-color 0.25s ease, color 0.25s ease,
-              border-color 0.25s ease, transform 0.2s ease;
+    border-color 0.25s ease, transform 0.2s ease;
 }
+
 /* Slight upward movement on hover gives a nice tactile feel */
-.btn:hover, .btn:focus { transform: translateY(-2px); outline: none; }
-.btn:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+.btn:hover,
+.btn:focus {
+  transform: translateY(-2px);
+  outline: none;
+}
+
+.btn:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+}
 
 /* White filled hero button — turns gold when hovered */
 .btn-hero {
@@ -171,7 +221,9 @@ p  { font-size: 1rem; line-height: 1.75; }
   /* This button fades up into view as part of the hero animation */
   animation: fadeUp 0.8s 0.35s ease both;
 }
-.btn-hero:hover, .btn-hero:focus {
+
+.btn-hero:hover,
+.btn-hero:focus {
   background-color: var(--gold);
   border-color: var(--gold);
   color: var(--white);
@@ -198,7 +250,9 @@ p  { font-size: 1rem; line-height: 1.75; }
   text-decoration: none;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
-.btn-explore:hover, .btn-explore:focus {
+
+.btn-explore:hover,
+.btn-explore:focus {
   background-color: #ffffff;
   color: #000000;
   outline: none;
@@ -222,7 +276,9 @@ p  { font-size: 1rem; line-height: 1.75; }
   text-decoration: none;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
-.btn-locations:hover, .btn-locations:focus {
+
+.btn-locations:hover,
+.btn-locations:focus {
   background-color: #ffffff;
   color: #000000;
   outline: none;
@@ -234,7 +290,9 @@ p  { font-size: 1rem; line-height: 1.75; }
   border-color: var(--black);
   color: var(--white);
 }
-.btn-dark:hover, .btn-dark:focus {
+
+.btn-dark:hover,
+.btn-dark:focus {
   background-color: var(--gold-dark);
   border-color: var(--gold-dark);
 }
@@ -249,9 +307,10 @@ p  { font-size: 1rem; line-height: 1.75; }
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 100; /* high z-index keeps it above all other content */
+  z-index: 100;
+  /* high z-index keeps it above all other content */
   background-color: #000000;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
 }
 
 /* Column layout on mobile — centres everything */
@@ -263,14 +322,34 @@ p  { font-size: 1rem; line-height: 1.75; }
   padding: 1rem 1.25rem;
 }
 
-
+/* Logo link styles — font size is locked so it can never 
+   inherit the large heading sizes from h1/h2/h3 */
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--white);
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 1rem !important;
+  text-transform: none !important;
+  line-height: 1 !important;
+}
 
 /* Setting explicit dimensions on the logo image so it doesn't collapse */
-.logo-svg {   width: 120px;
- }
+.logo-svg {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  display: block;
+}
 
 /* Navigation list is horizontal with spacing between links */
-.nav-list { display: flex; gap: 1.75rem; }
+.nav-list {
+  display: flex;
+  gap: 1.75rem;
+}
+
 .nav-list a {
   font-family: 'Lato', sans-serif;
   font-size: 0.78rem;
@@ -287,14 +366,23 @@ p  { font-size: 1rem; line-height: 1.75; }
 .nav-list a::after {
   content: '';
   position: absolute;
-  bottom: 0; left: 0;
-  width: 0; height: 2px;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
   background-color: var(--gold);
   transition: width 0.25s ease;
 }
+
 .nav-list a:hover::after,
-.nav-list a:focus::after { width: 100%; }
-.nav-list a:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+.nav-list a:focus::after {
+  width: 100%;
+}
+
+.nav-list a:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+}
 
 
 /* ============================================================
@@ -311,7 +399,8 @@ p  { font-size: 1rem; line-height: 1.75; }
   align-items: center;
   justify-content: center;
   background-image: url('../images/hero-background.jpg');
-  background-size: cover; /* covers the full area without stretching */
+  background-size: cover;
+  /* covers the full area without stretching */
   background-position: center;
   color: var(--white);
   overflow: hidden;
@@ -320,8 +409,9 @@ p  { font-size: 1rem; line-height: 1.75; }
 /* The overlay is absolutely positioned to cover the entire hero */
 .hero-overlay {
   position: absolute;
-  inset: 0; /* shorthand for top:0 right:0 bottom:0 left:0 */
-  background: rgba(0,0,0,0.48);
+  inset: 0;
+  /* shorthand for top:0 right:0 bottom:0 left:0 */
+  background: rgba(0, 0, 0, 0.48);
 }
 
 /* z-index:1 places the content above the overlay so it's visible */
@@ -331,13 +421,17 @@ p  { font-size: 1rem; line-height: 1.75; }
   text-align: center;
   padding: 2rem 1.5rem;
   width: 100%;
-  animation: fadeUp 0.8s ease both; /* hero content fades up on page load */
+  animation: fadeUp 0.8s ease both;
+  /* hero content fades up on page load */
 }
+
 .hero-content h1 {
   text-transform: uppercase;
   margin-bottom: 0.75rem;
-  animation: fadeUp 0.8s 0.1s ease both; /* slight delay after the container */
+  animation: fadeUp 0.8s 0.1s ease both;
+  /* slight delay after the container */
 }
+
 .hero-content p {
   max-width: 38ch;
   margin-inline: auto;
@@ -356,7 +450,11 @@ p  { font-size: 1rem; line-height: 1.75; }
   padding: 2.5rem 1.25rem;
   background-color: var(--bg);
 }
-.welcome h2 { text-transform: uppercase; margin-bottom: 1rem; }
+
+.welcome h2 {
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
 
 /* 2 column grid on mobile */
 .gallery {
@@ -365,8 +463,11 @@ p  { font-size: 1rem; line-height: 1.75; }
   gap: 0.3rem;
   margin-top: 1rem;
 }
+
 /* grid-column: 1 / -1 means span from first to last column = full width */
-.gallery-item--large { grid-column: 1 / -1; }
+.gallery-item--large {
+  grid-column: 1 / -1;
+}
 
 /* object-fit: cover fills the box without distorting the image */
 .gallery-item img {
@@ -375,7 +476,10 @@ p  { font-size: 1rem; line-height: 1.75; }
   object-fit: cover;
   object-position: center;
 }
-.gallery-item--large img { height: 190px; }
+
+.gallery-item--large img {
+  height: 190px;
+}
 
 
 /* ============================================================
@@ -388,7 +492,10 @@ p  { font-size: 1rem; line-height: 1.75; }
   background-color: var(--bg);
   text-align: center;
 }
-.features h2 { margin-bottom: 1.5rem; }
+
+.features h2 {
+  margin-bottom: 1.5rem;
+}
 
 /* Single column on mobile */
 .features-grid {
@@ -396,8 +503,18 @@ p  { font-size: 1rem; line-height: 1.75; }
   grid-template-columns: 1fr;
   gap: 2rem;
 }
-.feature-card h3 { text-transform: uppercase; margin: 0.75rem 0 0.5rem; }
-.feature-card p { color: #555; max-width: 34ch; margin-inline: auto; font-size: 0.9rem; }
+
+.feature-card h3 {
+  text-transform: uppercase;
+  margin: 0.75rem 0 0.5rem;
+}
+
+.feature-card p {
+  color: #555;
+  max-width: 34ch;
+  margin-inline: auto;
+  font-size: 0.9rem;
+}
 
 /* The icon container uses the pulse animation defined in the keyframes below */
 .feature-icon {
@@ -405,7 +522,12 @@ p  { font-size: 1rem; line-height: 1.75; }
   justify-content: center;
   animation: pulse 3s ease-in-out infinite;
 }
-.feature-icon img { width: 90px; height: 90px; object-fit: contain; }
+
+.feature-icon img {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+}
 
 
 /* ============================================================
@@ -427,7 +549,7 @@ p  { font-size: 1rem; line-height: 1.75; }
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.55);
+  background: rgba(0, 0, 0, 0.55);
 }
 
 /* z-index:1 lifts the grid above the ::before overlay */
@@ -435,8 +557,10 @@ p  { font-size: 1rem; line-height: 1.75; }
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: 1fr; /* single column on mobile */
+  grid-template-columns: 1fr;
+  /* single column on mobile */
 }
+
 .cta-panel {
   min-height: 260px;
   display: flex;
@@ -444,12 +568,21 @@ p  { font-size: 1rem; line-height: 1.75; }
   justify-content: center;
   padding: 2.5rem 1.5rem;
 }
+
 /* No border by default on mobile */
-.cta-panel--right { border-top: none; }
+.cta-panel--right {
+  border-top: none;
+}
 
 /* All text and buttons inside each panel are centred */
-.cta-panel-inner { text-align: center; }
-.cta-panel-inner .label { margin-bottom: 0.5rem; }
+.cta-panel-inner {
+  text-align: center;
+}
+
+.cta-panel-inner .label {
+  margin-bottom: 0.5rem;
+}
+
 .cta-panel-inner h2 {
   text-transform: uppercase;
   font-size: 1.5rem;
@@ -475,6 +608,7 @@ p  { font-size: 1rem; line-height: 1.75; }
   grid-template-columns: 1fr;
   gap: 1.5rem;
 }
+
 .story-image img {
   width: 100%;
   height: 280px;
@@ -482,10 +616,26 @@ p  { font-size: 1rem; line-height: 1.75; }
 }
 
 /* Force the About Us label to always show in gold */
-.story-text .label { color: #d69e3d !important; }
-.story-text h2 { text-transform: uppercase; margin-bottom: 1rem; }
-.story-text p { color: #333; margin-bottom: 1rem; font-size: 0.95rem; line-height: 1.7; }
-.story-text .btn { margin-top: 0.5rem; }
+.story-text .label {
+  color: #d69e3d !important;
+}
+
+.story-text h2 {
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  font-size: var(--h2);
+}
+
+.story-text p {
+  color: #333;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.story-text .btn {
+  margin-top: 0.5rem;
+}
 
 
 /* ============================================================
@@ -501,8 +651,17 @@ p  { font-size: 1rem; line-height: 1.75; }
   color: var(--white);
   padding: 2.5rem 1.25rem;
 }
-.testimonials-inner { display: grid; grid-template-columns: 1fr; gap: 2rem; }
-.testimonials h2 { text-transform: uppercase; margin-bottom: 0; }
+
+.testimonials-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.testimonials h2 {
+  text-transform: uppercase;
+  margin-bottom: 0;
+}
 
 /* Single column on mobile, cards are constrained in width */
 .testimonials-grid {
@@ -510,13 +669,16 @@ p  { font-size: 1rem; line-height: 1.75; }
   grid-template-columns: 1fr;
   gap: 1.25rem;
 }
+
 .testimonial-card {
-  position: relative; /* needed so the absolute blockquote positions relative to this */
+  position: relative;
+  /* needed so the absolute blockquote positions relative to this */
   overflow: hidden;
   max-width: 500px;
   margin-inline: auto;
   width: 100%;
 }
+
 .testimonial-card img {
   width: 100%;
   height: 260px;
@@ -530,23 +692,28 @@ p  { font-size: 1rem; line-height: 1.75; }
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 55%, transparent 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.4) 55%, transparent 100%);
 }
 
 /* The blockquote sits at the bottom of the card above the gradient */
 .testimonial-card blockquote {
   position: absolute;
-  bottom: 0; left: 0; right: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   padding: 1rem 1.25rem;
-  z-index: 1; /* above the ::after gradient */
+  z-index: 1;
+  /* above the ::after gradient */
   font-style: normal;
 }
+
 .testimonial-card blockquote p {
   font-size: 0.82rem;
   color: var(--white);
   margin-bottom: 0.4rem;
   line-height: 1.5;
 }
+
 /* The person's name shows in gold to match the brand color */
 .testimonial-card blockquote cite {
   font-family: 'Karla', sans-serif;
@@ -565,12 +732,16 @@ p  { font-size: 1rem; line-height: 1.75; }
    ============================================================ */
 .site-footer {
   background-color: #000000;
-  color: rgba(255,255,255,0.45);
+  color: rgba(255, 255, 255, 0.45);
   text-align: center;
   padding: 1.5rem 1.25rem;
-  border-top: 1px solid rgba(255,255,255,0.15);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
 }
-.site-footer p { font-size: 0.8rem; margin: 0; }
+
+.site-footer p {
+  font-size: 0.8rem;
+  margin: 0;
+}
 
 
 /* ============================================================
@@ -584,13 +755,27 @@ p  { font-size: 1rem; line-height: 1.75; }
    back down that draws the eye without being distracting.
    ============================================================ */
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50%       { transform: scale(1.07); }
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.07);
+  }
 }
 
 
@@ -617,14 +802,28 @@ p  { font-size: 1rem; line-height: 1.75; }
     align-items: center;
     gap: 0;
   }
-  .nav-list a { font-size: 0.8rem; }
-  .nav-list { gap: 1.5rem; }
+
+  .nav-list a {
+    font-size: 0.8rem;
+  }
+
+  .nav-list {
+    gap: 1.5rem;
+  }
 
   /* Hero gets taller on tablet */
-  .hero { min-height: 500px; }
-  .hero-content { max-width: 580px; padding: 3rem 1.25rem; }
+  .hero {
+    min-height: 500px;
+  }
 
-  .welcome { padding: 3.5rem 1.25rem; }
+  .hero-content {
+    max-width: 580px;
+    padding: 3rem 1.25rem;
+  }
+
+  .welcome {
+    padding: 3.5rem 1.25rem;
+  }
 
   /* Gallery switches to 3 columns. The large image spans the left 
      column across both rows using grid-row: 1 / 3 */
@@ -633,33 +832,86 @@ p  { font-size: 1rem; line-height: 1.75; }
     grid-template-rows: auto auto;
     gap: 0.4rem;
   }
-  .gallery-item--large { grid-column: 1 / 2; grid-row: 1 / 3; }
+
+  .gallery-item--large {
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+  }
+
   /* height:100% makes the large image fill both row heights */
-  .gallery-item--large img { height: 100%; min-height: 340px; }
-  .gallery-item img { height: 168px; }
+  .gallery-item--large img {
+    height: 100%;
+    min-height: 340px;
+  }
+
+  .gallery-item img {
+    height: 168px;
+  }
 
   /* Features switches to 2 columns. The third card spans both 
      columns and is centred using max-width and margin-inline:auto */
-  .features { padding: 3.5rem 1.25rem; }
-  .features-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
-  .feature-card:last-child { grid-column: 1 / -1; max-width: 300px; margin-inline: auto; }
+  .features {
+    padding: 3.5rem 1.25rem;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .feature-card:last-child {
+    grid-column: 1 / -1;
+    max-width: 300px;
+    margin-inline: auto;
+  }
 
   /* CTA panels go from stacked to side by side */
-  .cta-grid { grid-template-columns: 1fr 1fr; }
-  .cta-panel { min-height: 340px; }
-  .cta-panel-inner h2 { font-size: 1.802rem; }
+  .cta-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cta-panel {
+    min-height: 340px;
+  }
+
+  .cta-panel-inner h2 {
+    font-size: 1.802rem;
+  }
 
   /* Story section — image left, text right */
-  .story { padding: 3.5rem 1.25rem; }
-  .story-inner { grid-template-columns: 1fr 1fr; align-items: center; gap: 2.5rem; }
-  .story-image img { height: 400px; }
+  .story {
+    padding: 4rem 1.25rem;
+  }
+
+  .story-inner {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .story-image img {
+    height: 500px;
+  }
 
   /* Testimonials switch from single column to 3 columns.
      Cards go back to full width since there's enough room */
-  .testimonials { padding: 3.5rem 1.25rem; }
-  .testimonial-card { max-width: none; margin-inline: 0; }
-  .testimonial-card img { height: 360px; }
-  .testimonials-grid { grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+  .testimonials {
+    padding: 3.5rem 1.25rem;
+  }
+
+  .testimonial-card {
+    max-width: none;
+    margin-inline: 0;
+  }
+
+  .testimonial-card img {
+    height: 360px;
+  }
+
+  .testimonials-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
 }
 
 
@@ -680,44 +932,105 @@ p  { font-size: 1rem; line-height: 1.75; }
   }
 
   /* Header stays black but switches to row layout with more padding */
-  .site-header { background-color: #000000; }
+  .site-header {
+    background-color: #000000;
+  }
+
   .header-inner {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     gap: 0;
-    padding: 1rem 1.25rem;
+    padding: 1rem 2rem;
   }
-  .logo-link { color: var(--white); font-size: 1.1rem; }
-  .nav-list a { color: var(--white); font-size: 0.85rem; }
-  .nav-list { gap: 2rem; }
+
+  .logo-link {
+    color: var(--white);
+    font-size: 1.1rem;
+  }
+
+  .nav-list a {
+    color: var(--white);
+    font-size: 0.85rem;
+  }
+
+  .nav-list {
+    gap: 2rem;
+  }
 
   /* Hero gets taller and content has a max-width so it doesn't get too wide */
-  .hero { min-height: 600px; }
-  .hero-content { max-width: 700px; }
+  .hero {
+    min-height: 600px;
+  }
+
+  .hero-content {
+    max-width: 700px;
+  }
 
   /* More padding on welcome section for desktop */
-  .welcome { padding: 5rem 1.25rem; }
-  .gallery { gap: 0.5rem; }
-  .gallery-item img { height: 220px; }
-  .gallery-item--large img { min-height: 450px; }
+  .welcome {
+    padding: 5rem 1.25rem;
+  }
+
+  .gallery {
+    gap: 0.5rem;
+  }
+
+  .gallery-item img {
+    height: 220px;
+  }
+
+  .gallery-item--large img {
+    min-height: 450px;
+  }
 
   /* Features: all 3 cards in one row on desktop */
-  .features { padding: 5rem 1.25rem; }
-  .features-grid { grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
+  .features {
+    padding: 5rem 1.25rem;
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+
   /* Reset the tablet centering so the third card is normal again */
-  .feature-card:last-child { grid-column: auto; max-width: none; margin-inline: 0; }
+  .feature-card:last-child {
+    grid-column: auto;
+    max-width: none;
+    margin-inline: 0;
+  }
 
   /* CTA panels taller with more padding on desktop */
-  .cta-panel { min-height: 420px; padding: 3rem 4rem; }
-  .cta-panel-inner h2 { font-size: 2.2rem; }
+  .cta-panel {
+    min-height: 420px;
+    padding: 3rem 4rem;
+  }
+
+  .cta-panel-inner h2 {
+    font-size: 2.2rem;
+  }
 
   /* Story section gets more padding and the image column is slightly wider */
-  .story { padding: 5rem 1.25rem; }
-  .story-inner { grid-template-columns: 1fr 1.1fr; gap: 4rem; }
-  .story-image img { height: 500px; }
+  .story {
+    padding: 5rem 1.25rem;
+  }
+
+  .story-inner {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .story-image img {
+    height: 500px;
+  }
+
 
   /* Testimonials get more padding and taller cards on desktop */
-  .testimonials { padding: 5rem 1.25rem; }
-  .testimonial-card img { height: 480px; }
+  .testimonials {
+    padding: 5rem 1.25rem;
+  }
+
+  .testimonial-card img {
+    height: 480px;
+  }
 }

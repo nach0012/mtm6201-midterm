@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <!-- UTF-8 makes sure special characters like accents show up properly -->
   <meta charset="UTF-8" />
@@ -11,11 +12,13 @@
   <!-- The preconnect tags speed things up by connecting to Google early -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;700&family=Lato:wght@400;700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;700&family=Lato:wght@400;700;900&display=swap"
+    rel="stylesheet" />
 
   <!-- Linking my stylesheet — it lives inside the css folder -->
   <link rel="stylesheet" href="css/main.css" />
 </head>
+
 <body>
 
   <!-- Skip link: visually hidden until someone uses keyboard navigation.
@@ -26,14 +29,14 @@
        The header stays stuck to the top while scrolling (sticky positioning in CSS).
        role="banner" tells screen readers this is the site header -->
   <header class="site-header" role="banner">
-    <div class="wrapper header-inner">
+    <div class="header-inner">
 
       <!-- Logo: using an img tag for the SVG file from the images folder.
            aria-hidden on the image means screen readers skip it since the
            text "My Coffee House" already describes it -->
       <a href="#" class="logo-link" aria-label="My Coffee House – home">
         <img class="logo-svg" src="images/my-coffee-shop-logo.svg" alt="" aria-hidden="true" />
-    
+        My Coffee House
       </a>
 
       <!-- Primary navigation: aria-label tells screen readers what this nav is for,
@@ -64,7 +67,8 @@
       <div class="hero-overlay" aria-hidden="true"></div>
       <div class="wrapper hero-content">
         <h1>Experience Coffee Like Never Before</h1>
-        <p>We craft more than beverages; we create memories, one flavorful moment at a time. Embrace the aroma and let every visit be a chapter in your coffee story.</p>
+        <p>We craft more than beverages; we create memories, one flavorful moment at a time. Embrace the aroma and let
+          every visit be a chapter in your coffee story.</p>
         <!-- btn-hero gives this button its own white-filled style separate from other buttons -->
         <a href="#menu" class="btn btn-hero">Explore Our Menu</a>
       </div>
@@ -125,7 +129,8 @@
               <img src="images/fair-trade.svg" alt="" aria-hidden="true" />
             </div>
             <h3>Fair Trade Coffee</h3>
-            <p>We build direct relationships with the farmers and producers who help in the development of delicious, sustainable and organic coffee.</p>
+            <p>We build direct relationships with the farmers and producers who help in the development of delicious,
+              sustainable and organic coffee.</p>
           </article>
 
           <article class="feature-card" aria-label="Local Baked Goods">
@@ -133,7 +138,8 @@
               <img src="images/local-baked-goods.svg" alt="" aria-hidden="true" />
             </div>
             <h3>Local Baked Goods</h3>
-            <p>We use local products to bake our goods and bring in a variety of treats from local bakers with our community.</p>
+            <p>We use local products to bake our goods and bring in a variety of treats from local bakers with our
+              community.</p>
           </article>
 
           <article class="feature-card" aria-label="Made With Love">
@@ -141,7 +147,8 @@
               <img src="images/made-with-love.svg" alt="" aria-hidden="true" />
             </div>
             <h3>Made With Love</h3>
-            <p>We value our customers and make it our priority to serve everyone with respect and a friendly smile to start their day off right.</p>
+            <p>We value our customers and make it our priority to serve everyone with respect and a friendly smile to
+              start their day off right.</p>
           </article>
 
         </div>
@@ -193,8 +200,13 @@
         <div class="story-text">
           <p class="label">About Us</p>
           <h2 id="story-heading">Read Our Story</h2>
-          <p>In the heart of our community, My Coffee House emerged as a humble local coffee shop that sought to redefine the coffee experience. Founded with a passion for quality brews and a commitment to fostering genuine connections, we embarked on this journey with a vision to create a warm and inviting space for coffee enthusiasts and casual patrons alike.</p>
-          <p>My Coffee House quickly became a cherished gathering spot, where the rich aroma of freshly ground coffee beans mingled with the laughter of friends and the tapping of keyboards from those seeking a cozy workspace.</p>
+          <p>In the heart of our community, My Coffee House emerged as a humble local coffee shop that sought to
+            redefine the coffee experience. Founded with a passion for quality brews and a commitment to fostering
+            genuine connections, we embarked on this journey with a vision to create a warm and inviting space for
+            coffee enthusiasts and casual patrons alike.</p>
+          <p>My Coffee House quickly became a cherished gathering spot, where the rich aroma of freshly ground coffee
+            beans mingled with the laughter of friends and the tapping of keyboards from those seeking a cozy workspace.
+          </p>
           <!-- btn-dark gives this a black background to stand out on the cream background -->
           <a href="#about" class="btn btn-dark">Learn More</a>
         </div>
@@ -223,7 +235,8 @@
             <article class="testimonial-card" aria-label="Testimonial from Jane G., Toronto">
               <img src="images/testimonial-1.jpeg" alt="Customer Jane G. smiling with a coffee cup" loading="lazy" />
               <blockquote>
-                <p>"I always make a point to visit My Coffee Company when in Ottawa. Delicious coffee and friendly service."</p>
+                <p>"I always make a point to visit My Coffee Company when in Ottawa. Delicious coffee and friendly
+                  service."</p>
                 <!-- footer inside blockquote holds the attribution — this is proper semantic HTML -->
                 <footer><cite>Jane G., Toronto</cite></footer>
               </blockquote>
@@ -261,4 +274,5 @@
   </footer>
 
 </body>
+
 </html>
