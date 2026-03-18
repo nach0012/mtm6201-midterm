@@ -1,4 +1,4 @@
-/* =============================================================
+/* 
    MAIN.CSS — My Coffee House Midterm Project
    
    I used a mobile-first approach which means I wrote the base 
@@ -7,15 +7,15 @@
    
    768px = tablet breakpoint
    1100px = desktop breakpoint
-   ============================================================= */
+   */
 
 
-/* ============================================================
+/* 
    1. CSS VARIABLES
    I stored all my colors and font sizes as variables so I only 
    have to change them in one place if needed. Makes everything 
    consistent across the whole stylesheet.
-   ============================================================ */
+    */
 :root {
   --white: #ffffff;
   --black: #000000;
@@ -38,13 +38,13 @@
 }
 
 
-/* ============================================================
+/*
    2. RESET & BASE STYLES
    I reset margin and padding on everything so browsers don't
    add their own default spacing that I didn't ask for.
    box-sizing: border-box means padding gets included in the 
    width calculation instead of adding to it — much easier to work with.
-   ============================================================ */
+  */
 *,
 *::before,
 *::after {
@@ -115,9 +115,9 @@ p {
 }
 
 
-/* ============================================================
+/* 
    3. REUSABLE UTILITIES
-   ============================================================ */
+   */
 
 /* Small gold uppercase label that appears above section headings.
    I reuse this class across multiple sections throughout the page */
@@ -174,7 +174,7 @@ p {
 }
 
 
-/* ============================================================
+/* 
    4. BUTTONS
    I have three button styles for different contexts:
    .btn-hero    = white filled button on the hero section
@@ -184,7 +184,7 @@ p {
    
    The transition property makes the hover effect animate smoothly
    instead of changing instantly
-   ============================================================ */
+  */
 .btn {
   display: inline-block;
   font-family: 'Karla', sans-serif;
@@ -298,12 +298,12 @@ p {
 }
 
 
-/* ============================================================
+/* 
    5. HEADER
    Sticky means it stays at the top of the screen while scrolling.
    On mobile the logo and nav stack vertically and are centred.
    At tablet+ they switch to a horizontal row with logo left, nav right.
-   ============================================================ */
+   = */
 .site-header {
   position: sticky;
   top: 0;
@@ -382,12 +382,12 @@ p {
 }
 
 
-/* ============================================================
+/* 
    6. HERO SECTION
    The background photo is set with CSS background-image.
    A semi-transparent black overlay sits on top of the photo
    so the white text stays readable regardless of the photo content.
-   ============================================================ */
+    */
 .hero {
   position: relative;
   min-height: 320px;
@@ -438,11 +438,11 @@ p {
 }
 
 
-/* ============================================================
+/*
    7. WELCOME / GALLERY SECTION
    The gallery uses CSS Grid with 2 columns on mobile.
    The large latte image spans both columns (full width) on mobile.
-   ============================================================ */
+    */
 .welcome {
   padding: 2.5rem 1.25rem;
   background-color: var(--bg);
@@ -479,11 +479,11 @@ p {
 }
 
 
-/* ============================================================
+/* 
    8. FEATURES SECTION (WHY VISIT US)
    Cards stack in one column on mobile.
    The icon images have a slow pulse animation to draw the eye.
-   ============================================================ */
+    */
 .features {
   padding: 2.5rem 1.25rem;
   background-color: var(--bg);
@@ -527,12 +527,12 @@ p {
 }
 
 
-/* ============================================================
+/* 
    9. CTA BANNER SECTION
    One background image covers the whole section.
    A dark overlay on top makes the white text readable.
    The two panels stack on mobile and sit side by side on tablet+.
-   ============================================================ */
+    */
 .cta-banner {
   position: relative;
   color: var(--white);
@@ -589,11 +589,11 @@ p {
 }
 
 
-/* ============================================================
+/* 
    10. STORY SECTION (ABOUT US)
    Single column on mobile — image above text.
    Side by side on tablet and desktop using CSS Grid.
-   ============================================================ */
+    */
 .story {
   padding: 2.5rem 1.25rem;
   background-color: var(--bg);
@@ -614,7 +614,7 @@ p {
 
 /* Force the About Us label to always show in gold */
 .story-text .label {
-  color: #d69e3d ;
+  color: #d69e3d;
 }
 
 .story-text h2 {
@@ -635,14 +635,14 @@ p {
 }
 
 
-/* ============================================================
+/* 
    11. TESTIMONIALS SECTION
    Pure black background. Cards stack on mobile.
    Each card uses position:relative so I can use position:absolute
    on the blockquote to overlay it on top of the photo.
    A gradient goes from transparent at the top to dark at the bottom
    so the white quote text is always readable.
-   ============================================================ */
+   */
 .testimonials {
   background-color: #000000;
   color: var(--white);
@@ -723,10 +723,10 @@ p {
 }
 
 
-/* ============================================================
+/* 
    12. FOOTER
    Simple centered footer that matches the black testimonials section
-   ============================================================ */
+   */
 .site-footer {
   background-color: #000000;
   color: white;
@@ -741,7 +741,7 @@ p {
 }
 
 
-/* ============================================================
+/* 
    13. KEYFRAME ANIMATIONS
    
    fadeUp: used on the hero content — elements start 20px below
@@ -750,7 +750,7 @@ p {
    
    pulse: used on the feature icons — a slow gentle scale up and 
    back down that draws the eye without being distracting.
-   ============================================================ */
+   */
 @keyframes fadeUp {
   from {
     opacity: 0;
@@ -776,13 +776,13 @@ p {
 }
 
 
-/* =============================================================
+/* 
    14. TABLET MEDIA QUERY — min-width: 768px
    
    At 768px I switch from single column to multi-column layouts.
    I also bump up the font sizes to the tablet scale.
    The header switches from stacked to a row layout here.
-   ============================================================= */
+    */
 @media (min-width: 768px) {
 
   /* Tablet type scale from the project requirements */
@@ -912,13 +912,13 @@ p {
 }
 
 
-/* =============================================================
+/* 
    15. DESKTOP MEDIA QUERY — min-width: 1100px
    
    At 1100px I apply the largest font sizes and increase section
    padding for more breathing room. The header stays as a row
    but with more padding.
-   ============================================================= */
+    */
 @media (min-width: 1100px) {
 
   /* Desktop type scale from the project requirements */
