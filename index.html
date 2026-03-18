@@ -2,9 +2,9 @@
 <html lang="en">
 
 <head>
-  <!-- UTF-8 makes sure special characters like accents show up properly -->
+
   <meta charset="UTF-8" />
-  <!-- This tells the browser to match the screen width so it looks good on phones -->
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Midterm Project</title>
 
@@ -36,7 +36,6 @@
            text "My Coffee House" already describes it -->
       <a href="#" class="logo-link" aria-label="My Coffee House – home">
         <img class="logo-svg" src="images/my-coffee-shop-logo.svg" alt="" aria-hidden="true" />
-        My Coffee House
       </a>
 
       <!-- Primary navigation: aria-label tells screen readers what this nav is for,
@@ -89,21 +88,19 @@
         <div class="gallery" role="list">
           <!-- This is the large latte image — it gets special treatment in the grid layout -->
           <div class="gallery-item gallery-item--large" role="listitem">
-            <img src="images/latte.jpeg" alt="Barista pouring latte art into a cup" loading="lazy" />
-          </div>
-          <!-- loading="lazy" on all images means they only load when scrolled into view,
-               which makes the page faster to load initially -->
-          <div class="gallery-item" role="listitem">
-            <img src="images/coffee-beans.jpeg" alt="Close-up of roasted coffee beans" loading="lazy" />
+            <img src="images/latte.jpeg" alt="Barista pouring latte art into a cup">
           </div>
           <div class="gallery-item" role="listitem">
-            <img src="images/pouring-coffee.jpeg" alt="Coffee being poured from a glass container" loading="lazy" />
+            <img src="images/coffee-beans.jpeg" alt="Close-up of roasted coffee beans">
           </div>
           <div class="gallery-item" role="listitem">
-            <img src="images/three-cups.jpeg" alt="Three coffee cups held together" loading="lazy" />
+            <img src="images/pouring-coffee.jpeg" alt="Coffee being poured from a glass container">
           </div>
           <div class="gallery-item" role="listitem">
-            <img src="images/smiling-employee.jpeg" alt="Smiling barista at the counter" loading="lazy" />
+            <img src="images/three-cups.jpeg" alt="Three coffee cups held together">
+          </div>
+          <div class="gallery-item" role="listitem">
+            <img src="images/smiling-employee.jpeg" alt="Smiling barista at the counter">
           </div>
         </div>
       </div>
@@ -194,7 +191,7 @@
       <div class="wrapper story-inner">
 
         <div class="story-image">
-          <img src="images/about-us.jpeg" alt="Two baristas working at the espresso machine" loading="lazy" />
+          <img src="images/about-us.jpeg" alt="Two baristas working at the espresso machine">
         </div>
 
         <div class="story-text">
@@ -232,29 +229,29 @@
 
             <!-- Each testimonial is an article because each one is a standalone piece of content.
                  blockquote is the correct semantic element for a quoted piece of text -->
-            <article class="testimonial-card" aria-label="Testimonial from Jane G., Toronto">
-              <img src="images/testimonial-1.jpeg" alt="Customer Jane G. smiling with a coffee cup" loading="lazy" />
+            <article class="testimonial-card" aria-label="Testimonial from Jane D., Toronto">
+              <img src="images/testimonial-1.jpeg" alt="Customer Jane G. smiling with a coffee cup">
               <blockquote>
                 <p>"I always make a point to visit My Coffee Company when in Ottawa. Delicious coffee and friendly
                   service."</p>
                 <!-- footer inside blockquote holds the attribution — this is proper semantic HTML -->
-                <footer><cite>Jane G., Toronto</cite></footer>
+                <footer><cite>JANE D., TORONTO</cite></footer>
               </blockquote>
             </article>
 
             <article class="testimonial-card" aria-label="Testimonial from Scott G., Ottawa">
-              <img src="images/testimonial-2.jpeg" alt="Customer Scott G. laughing with coffee" loading="lazy" />
+              <img src="images/testimonial-2.jpeg" alt="Customer Scott S. laughing with coffee" loading="lazy" />
               <blockquote>
                 <p>"Great atmosphere to get some work done while enjoying a cup or two of freshly brewed coffee."</p>
-                <footer><cite>Scott G., Ottawa</cite></footer>
+                <footer><cite>Scott S., OTTAWA</cite></footer>
               </blockquote>
             </article>
 
             <article class="testimonial-card" aria-label="Testimonial from Sofia P., Ottawa">
-              <img src="images/testimonial-3.jpeg" alt="Customer Sofia P. smiling with a coffee cup" loading="lazy" />
+              <img src="images/testimonial-3.jpeg" alt="Customer Susie F. smiling with a coffee cup" loading="lazy" />
               <blockquote>
                 <p>"Best coffee in Ottawa and the service is top notch. Would highly recommend a visit."</p>
-                <footer><cite>Sofia P., Ottawa</cite></footer>
+                <footer><cite>SUSIE F., OTTAWA</cite></footer>
               </blockquote>
             </article>
 
